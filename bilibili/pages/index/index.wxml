@@ -1,0 +1,42 @@
+<view class="main">
+    <MyTitle></MyTitle>
+    <!-- 导航 -->
+    <view class="nav_wrap">
+        <scroll-view class="nav" scroll-x="{{true}}">
+            <view class="nav_item {{index==currentIndex?'active':''}}" wx:for="{{navList}}" wx:key="index" bindtap="activeNav" data-index="{{index}}">
+                {{item.text}}
+            </view>
+        </scroll-view>
+    </view>
+    <!-- 轮播图 -->
+    <view class="slides">
+        <swiper autoplay="{{true}}" indicator-dots="{{true}}" circular="{{true}}">
+            <swiper-item wx:for="{{swiperList}}" wx:key="index">
+                <navigator >
+                    <image src="{{item.imgSrc}}" mode="witdhFix"/>
+                </navigator>
+            </swiper-item>
+        </swiper>
+    </view>
+    <!-- 视频列表 -->
+    <view class="video_wrap">
+        <navigator url="../detail/detail?id={{item.id}}" class="video_item" wx:for="{{videosList}}" wx:key="index">
+            <view class="video_img">
+                <image src="{{item.imgSrc}}" />
+                <view class="video_info">
+                    <!-- 播放量 -->
+                    <view class="play_count">
+                        <text class="fa fa-play-circle-o"></text>
+                        <text class="play_total">{{item.playCount}}</text>
+                    </view>
+                    <!-- 评论量 -->
+                    <view class="comment_count">
+                        <text class="fa fa-commenting-o"></text>
+                        <text class="comment_total">{{item.commentCount}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="video_title">{{item.desc}}</view>
+        </navigator>
+    </view>
+</view>

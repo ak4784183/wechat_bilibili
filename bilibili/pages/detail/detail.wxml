@@ -1,0 +1,62 @@
+<view class="main">
+    <MyTitle></MyTitle>
+    <!-- 视频 -->
+    <view class="video_info">
+        <video src="{{videoInfo.videoSrc}}" />
+    </view>
+    <!-- 标题 -->
+    <view class="video_title">{{videoInfo.videoTitle}}
+    <text class="fa fa-angle-down"></text>
+    </view>
+    
+    <!-- 简介 -->
+    <view class="video_detail">
+        <text class="author">{{videoInfo.author}}</text>
+        <text class="play_count">{{videoInfo.playCount}}</text>
+        <text class="comment_count">{{videoInfo.commentCount}}弹幕</text>
+        <text class="date">{{videoInfo.date}}</text>
+    </view>
+    <!-- 推荐视频 -->
+    <view class="ohter_list">
+        <navigator class="ohter_item" wx:for="{{otherList}}" wx:key="index">
+            <!-- 图片 -->
+            <view class="other_img_wrap">
+                <image src="{{item.imgSrc}}" mode="widthFix" />
+            </view>
+            <!-- 视频详情 -->
+            <view class="other_info">
+                <!-- 标题 -->
+                <text class="other_title">{{item.title}}</text>
+                <!-- 评论和播放量 -->
+                <view class="other_detail">
+                    <text class="other_play">{{item.playMsg}}次观看</text>
+                    <text class="ohter_comment">{{item.commentCount}}</text>
+                </view>
+            </view>
+        </navigator>
+    </view>
+    <!-- 评论区 -->
+    <view class="comment_main">
+        <view class="comment_title">
+            评论{{commentData.commentTotalCount}}
+        </view>
+        <view class="comment_list">
+            <view class="comment_item" wx:for="{{commentData.commentList}}" wx:key="index">
+                <!-- 头像 -->
+                <view class="comment_user">
+                    <image src="{{item.userIconSrc}}" mode="widthFix"/>
+                </view>
+                <!-- 评论内容 -->
+                <view class="comment_info">
+                    <view class="comment_detail">
+                        <text class="comment_author">{{item.username}}</text>
+                        <text class="comment_date">{{item.commentDate}}</text>
+                    </view>
+                    <view class="comment_content">
+                        {{item.commentInfo}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
